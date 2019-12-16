@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\geekwise\\.virtualenvs\\django-banking-0DEVEuJK\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\geekwise\\.virtualenvs\\django-banking-0DEVEuJK\\Scripts\\python.exe",
+    "python.linting.enabled": false
 }
