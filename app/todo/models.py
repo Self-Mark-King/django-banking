@@ -8,3 +8,26 @@ class Todo(models.Model):
 
     def _str_(self):
         return self.title
+
+class Branch(models.Model):
+    branch_name = models.CharField(max_length=30)
+    address = models.CharField(max_length=30)
+
+    def _str_(self):
+        return self.branch_name
+
+class Customer(models.Model):
+    customer_name = models.CharField(max_length=30)
+    account_number = models.IntegerField()
+    branch = models.ForeignKey(Branch,on_delete=models.CASCADE)
+
+    def _str_(self):
+        return self.customer_name
+
+class Product(models.Model):
+    product_name = models.CharField(max_length=30)
+    product_sku = models.IntegerField()
+    customers = models.ManyToManyField(Customer)
+
+    def _str_(self):
+        return self.product_name
