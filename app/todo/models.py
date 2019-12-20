@@ -6,14 +6,14 @@ class Todo(models.Model):
     description = models.TextField()
     completed = models.BooleanField(default=False)
 
-    def _str_(self):
+    def __str__(self):
         return self.title
 
 class Branch(models.Model):
     branch_name = models.CharField(max_length=30)
     address = models.CharField(max_length=30)
 
-    def _str_(self):
+    def __str__(self):
         return self.branch_name
 
 class Customer(models.Model):
@@ -21,7 +21,7 @@ class Customer(models.Model):
     account_number = models.IntegerField()
     branch = models.ForeignKey(Branch,on_delete=models.CASCADE)
 
-    def _str_(self):
+    def __str__(self):
         return self.customer_name
 
 class Product(models.Model):
@@ -29,5 +29,5 @@ class Product(models.Model):
     product_sku = models.IntegerField()
     customers = models.ManyToManyField(Customer)
 
-    def _str_(self):
+    def __str__(self):
         return self.product_name
