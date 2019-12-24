@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from .models import Todo
+# from .models import Todo
 from .models import Branch
 from .models import Customer
 from .models import Product
 
 
-class TodoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Todo
-        fields = ('id', 'title', 'description', 'completed')
+# class TodoSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Todo
+#         fields = ('id', 'title', 'description', 'completed')
 
 class BranchSerializer(serializers.ModelSerializer):
     class Meta:

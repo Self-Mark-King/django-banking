@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',         
     'rest_framework',     
-    'todo',
+    'todo', # the other models and views do not need to be imported
 ]
 
 MIDDLEWARE = [

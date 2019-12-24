@@ -12,7 +12,7 @@ from todo import views                               # add this
 
         
 router = routers.DefaultRouter()                      # add this
-router.register(r'todos', views.TodoView, 'todo')     # add this
+# router.register(r'todos', views.TodoView, 'todo')     # add this
 router.register(r'branch', views.BranchView, 'branch')
 router.register(r'customer', views.CustomerView, 'customer')
 router.register(r'product', views.ProductView, 'product')
