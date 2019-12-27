@@ -22,3 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),           
     path('api/', include(router.urls))                # add this
 ]
+
+# the 3 lines below change the behavior of the admin screen labels
+admin.site.site_header = "Banking Admin"
+admin.site.site_title = "Banking Admin Portal"
+admin.site.index_title = "Welcome to the Banking Portal"

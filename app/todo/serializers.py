@@ -17,8 +17,8 @@ class BranchSerializer(serializers.ModelSerializer):
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
-        fields = ('id', 'customer_name','account_number', 'branch')
+        model = Customer, Product
+        fields = ('id', 'customer_name','account_number', 'branch', 'product_name')
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:

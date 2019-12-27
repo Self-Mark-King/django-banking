@@ -20,6 +20,7 @@ class Customer(models.Model):
     customer_name = models.CharField(max_length=30)
     account_number = models.IntegerField()
     branch = models.ForeignKey(Branch,on_delete=models.CASCADE)
+    # product = models.ForeignKey(Product,max_length=30,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.customer_name
@@ -31,3 +32,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_name
+
+
+
