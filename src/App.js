@@ -20,7 +20,7 @@ import React, { Component } from "react";
       }
       refreshList = () => {
         axios
-          .get("http://127.0.0.1:8000/api/branch/")
+          .get("https://backend-banking.herokuapp.com/api")
           .then(res => this.setState({ todoList: res.data }))
           .catch(err => console.log(err));
       };
@@ -92,17 +92,17 @@ import React, { Component } from "react";
         this.toggle();
         if (item.id) {
           axios
-            .put(`http://127.0.0.1:8000/api/branch/${item.id}/`, item) //create
+            .put(`https://backend-banking.herokuapp.com/api${item.id}/`, item) //create
             .then(res => this.refreshList());
           return;
         }
         axios
-          .post("http://127.0.0.1:8000/api/branch/", item) //update
+          .post("https://backend-banking.herokuapp.com/api", item) //update
           .then(res => this.refreshList());
       };
       handleDelete = item => {
         axios
-          .delete(`http://127.0.0.1:8000/api/branch/${item.id}`) //delete
+          .delete(`https://backend-banking.herokuapp.com/api${item.id}`) //delete
           .then(res => this.refreshList());
       };
       createItem = () => {
