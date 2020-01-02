@@ -8,9 +8,9 @@ import React, { Component } from "react";
         this.state = {
           viewCompleted: false,
           activeItem: {
-            title: "",
-            description: "",
-            completed: false
+            branch_name: "",
+            address: "",
+            // completed: false
           },
           todoList: []
         };
@@ -20,7 +20,7 @@ import React, { Component } from "react";
       }
       refreshList = () => {
         axios
-          .get("http://localhost:8000/api/todos/")
+          .get("http://127.0.0.1:8000/api/branch/")
           .then(res => this.setState({ todoList: res.data }))
           .catch(err => console.log(err));
       };
@@ -49,10 +49,11 @@ import React, { Component } from "react";
         );
       };
       renderItems = () => {
-        const { viewCompleted } = this.state;
-        const newItems = this.state.todoList.filter(
-          item => item.completed === viewCompleted
-        );
+        // const { viewCompleted } = this.state;
+        // const newItems = this.state.todoList.filter(
+        //   item => item.completed === viewCompleted
+        // );
+        const newItems = this.state.todoList
         return newItems.map(item => (
           <li
             key={item.id}
@@ -62,9 +63,9 @@ import React, { Component } from "react";
               className={`todo-title mr-2 ${
                 this.state.viewCompleted ? "completed-todo" : ""
               }`}
-              title={item.description}
+              title={item.branch_name}
             >
-              {item.title}
+              {item.branch_name}
             </span>
             <span>
               <button
@@ -91,21 +92,21 @@ import React, { Component } from "react";
         this.toggle();
         if (item.id) {
           axios
-            .put(`http://localhost:8000/api/todos/${item.id}/`, item)
+            .put(`http://127.0.0.1:8000/api/branch/${item.id}/`, item) //create
             .then(res => this.refreshList());
           return;
         }
         axios
-          .post("http://localhost:8000/api/todos/", item)
+          .post("http://127.0.0.1:8000/api/branch/", item) //update
           .then(res => this.refreshList());
       };
       handleDelete = item => {
         axios
-          .delete(`http://localhost:8000/api/todos/${item.id}`)
+          .delete(`http://127.0.0.1:8000/api/branch/${item.id}`) //delete
           .then(res => this.refreshList());
       };
       createItem = () => {
-        const item = { title: "", description: "", completed: false };
+        const item = { branch_name: "", address: ""};
         this.setState({ activeItem: item, modal: !this.state.modal });
       };
       editItem = item => {
@@ -114,7 +115,7 @@ import React, { Component } from "react";
       render() {
         return (
           <main className="content">
-            <h1 className="text-white text-uppercase text-center my-4">Todo app</h1>
+            <h1 className="text-white text-uppercase text-center my-4">CRUD Bank app</h1>
             <div className="row ">
               <div className="col-md-6 col-sm-10 mx-auto p-0">
                 <div className="card p-3">
