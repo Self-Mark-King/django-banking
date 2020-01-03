@@ -124,10 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL=True
 
 django_heroku.settings(locals())
 
-CORS_ORIGIN_WHITELIST = (
-    'https://127.0.0.1:3000',
-)
+# CORS_ORIGIN_WHITELIST = (
+#     'https://127.0.0.1:3000',
+# )
