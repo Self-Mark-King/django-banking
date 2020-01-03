@@ -12,17 +12,30 @@ import React, { Component } from "react";
             address: "",
             // completed: false
           },
-          todoList: []
+          todoList: [],
+          customer_list: [],
+          product_list: []
         };
       }
       componentDidMount() {
         this.refreshList();
+        console.log(this.state.customer_list);
+        console.log(this.state.product_list);
+        console.log(this.state.todoList);
       }
       refreshList = () => {
         axios
-          .get("https://backend-banking.herokuapp.com/api")
+          .get("https://backend-banking.herokuapp.com/api/branch")
           .then(res => this.setState({ todoList: res.data }))
           .catch(err => console.log(err));
+        axios
+        .get("https://backend-banking.herokuapp.com/api/customer")
+        .then(res => this.setState({ customer_list: res.data }))
+        .catch(err => console.log(err));
+        axios
+        .get("https://backend-banking.herokuapp.com/api/product")
+        .then(res => this.setState({ product_list: res.data }))
+        .catch(err => console.log(err));
       };
       displayCompleted = status => {
         if (status) {
@@ -92,17 +105,17 @@ import React, { Component } from "react";
         this.toggle();
         if (item.id) {
           axios
-            .put(`https://backend-banking.herokuapp.com/api${item.id}/`, item) //create
+            .put(`https://backend-banking.herokuapp.com/api/branch${item.id}/`, item) //create
             .then(res => this.refreshList());
           return;
         }
         axios
-          .post("https://backend-banking.herokuapp.com/api", item) //update
+          .post("https://backend-banking.herokuapp.com/api/branch", item) //update
           .then(res => this.refreshList());
       };
       handleDelete = item => {
         axios
-          .delete(`https://backend-banking.herokuapp.com/api${item.id}`) //delete
+          .delete(`https://backend-banking.herokuapp.com/api/branch${item.id}`) //delete
           .then(res => this.refreshList());
       };
       createItem = () => {
@@ -113,6 +126,7 @@ import React, { Component } from "react";
         this.setState({ activeItem: item, modal: !this.state.modal });
       };
       render() {
+        
         return (
           <main className="content">
             <h1 className="text-white text-uppercase text-center my-4">CRUD Bank app</h1>
