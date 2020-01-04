@@ -74,7 +74,7 @@ import React, { Component } from "react";
           >
             <span
               className={`todo-title mr-2 ${
-                this.state.viewCompleted ? "completed-todo" : ""
+                this.state.viewCompleted ? "" : ""
               }`}
               title={item.branch_name}
             >
