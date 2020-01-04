@@ -6,7 +6,7 @@ import React, { Component } from "react";
       constructor(props) {
         super(props);
         this.state = {
-          viewCompleted: false,
+          viewCompleted: true,
           activeItem: {
             branch_name: "",
             address: "",
@@ -19,21 +19,21 @@ import React, { Component } from "react";
       }
       componentDidMount() {
         this.refreshList();
-        console.log(this.state.customer_list);
-        console.log(this.state.product_list);
-        console.log(this.state.todoList);
+        // console.log(this.state.customer_list);
+        // console.log(this.state.product_list);
+        // console.log(this.state.todoList);
       }
       refreshList = () => {
         axios
-          .get("https://backend-banking.herokuapp.com/api/branch")
+          .get("https://backend-banking.herokuapp.com/api/branch/")
           .then(res => this.setState({ todoList: res.data }))
           .catch(err => console.log(err));
         axios
-        .get("https://backend-banking.herokuapp.com/api/customer")
+        .get("https://backend-banking.herokuapp.com/api/customer/")
         .then(res => this.setState({ customer_list: res.data }))
         .catch(err => console.log(err));
         axios
-        .get("https://backend-banking.herokuapp.com/api/product")
+        .get("https://backend-banking.herokuapp.com/api/product/")
         .then(res => this.setState({ product_list: res.data }))
         .catch(err => console.log(err));
       };
@@ -50,14 +50,14 @@ import React, { Component } from "react";
               onClick={() => this.displayCompleted(true)}
               className={this.state.viewCompleted ? "active" : ""}
             >
-              complete
+              Branch
             </span>
-            <span
+            {/* <span
               onClick={() => this.displayCompleted(false)}
               className={this.state.viewCompleted ? "" : "active"}
             >
               Incomplete
-            </span>
+            </span> */}
           </div>
         );
       };
@@ -103,19 +103,20 @@ import React, { Component } from "react";
       };
       handleSubmit = item => {
         this.toggle();
+        console.log(item)
         if (item.id) {
           axios
-            .put(`https://backend-banking.herokuapp.com/api/branch${item.id}/`, item) //create
+            .put(`https://backend-banking.herokuapp.com/api/branch/${item.id}/`, item) //create
             .then(res => this.refreshList());
           return;
         }
         axios
-          .post("https://backend-banking.herokuapp.com/api/branch", item) //update
+          .post("https://backend-banking.herokuapp.com/api/branch/", item) //update
           .then(res => this.refreshList());
       };
       handleDelete = item => {
         axios
-          .delete(`https://backend-banking.herokuapp.com/api/branch${item.id}`) //delete
+          .delete(`https://backend-banking.herokuapp.com/api/branch/${item.id}`) //delete
           .then(res => this.refreshList());
       };
       createItem = () => {
