@@ -52,6 +52,18 @@ import React, { Component } from "react";
             >
               Branch
             </span>
+            <span
+              onClick={() => this.displayCompleted(true)}
+              className={this.state.viewCompleted ? "active" : ""}
+            >
+              Customer
+            </span>
+            <span
+              onClick={() => this.displayCompleted(true)}
+              className={this.state.viewCompleted ? "active" : ""}
+            >
+              Product
+            </span>
             {/* <span
               onClick={() => this.displayCompleted(false)}
               className={this.state.viewCompleted ? "" : "active"}
@@ -126,6 +138,14 @@ import React, { Component } from "react";
       editItem = item => {
         this.setState({ activeItem: item, modal: !this.state.modal });
       };
+      createCustomer = () => {
+        const item = { customer_name: "", account_number: "", branch_name:""};
+        this.setState({ activeItem: item, modal: !this.state.modal });
+      };
+      createProduct = () => {
+        const item = { product_name: "", product_sku: "", customers:""};
+        this.setState({ activeItem: item, modal: !this.state.modal });
+      };
       render() {
         
         return (
@@ -137,6 +157,12 @@ import React, { Component } from "react";
                   <div className="">
                     <button onClick={this.createItem} className="btn btn-primary">
                       Add Branch
+                    </button>
+                    <button onClick={this.createCustomer} className="btn btn-primary">
+                      Add Customer
+                    </button>
+                    <button onClick={this.createProduct} className="btn btn-primary">
+                      Add Product
                     </button>
                   </div>
                   {this.renderTabList()}

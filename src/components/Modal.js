@@ -30,7 +30,7 @@ import React, { Component } from "react";
         const { toggle, onSave } = this.props;
         return (
           <Modal isOpen={true} toggle={toggle}>
-            <ModalHeader toggle={toggle}> Branch Item </ModalHeader>
+            <ModalHeader toggle={toggle}> Branch Information </ModalHeader>
             <ModalBody>
               <Form>
                 <FormGroup>
