@@ -41,7 +41,13 @@ INSTALLED_APPS = [
     'corsheaders',         
     'rest_framework',     
     'todo', # the other models and views do not need to be imported
+    'account',
+    'knox'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

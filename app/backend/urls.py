@@ -19,8 +19,12 @@ router.register(r'product', views.ProductView, 'product')
 
         
 urlpatterns = [
+    path('',include(router.urls)),
     path('admin/', admin.site.urls),           
-    path('api/', include(router.urls))                # add this
+    path('api/', include(router.urls)),
+    path('users/', include('account.urls'))
+    # path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
+    # path('accounts/profile',include(router.urls))
 ]
 
 # the 3 lines below change the behavior of the admin screen labels
